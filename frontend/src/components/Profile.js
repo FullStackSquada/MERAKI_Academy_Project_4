@@ -43,8 +43,6 @@ const Profile = () => {
   }, []);
 
   const a = myOrder.map((element, i) => {
-    console.log("order", element);
-
     return (
       <div>
         <p id="order-number"># {i + 1} Order</p>
@@ -145,7 +143,9 @@ const Profile = () => {
       </div>{" "}
       <div className="information scroll">
         <p id="your-information">Your Orders</p>
-        {a}
+        {myOrder.length ? a : 
+        <div className ="user-with-no-order">
+          <h4>You don't have any previous order </h4> </div> }
       </div>
     </div>
   );
