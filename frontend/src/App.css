@@ -1249,8 +1249,8 @@ hr {
 }
 
 .edit-info span {
-  font-size: 15px;
-  font-weight: bold;
+  /* font-size: 15px; */
+  /* font-weight: bold; */
 }
 
 .input-edit {
@@ -1263,7 +1263,8 @@ hr {
   width: 70%;
   height: 40px;
   /* margin: auto;s */
-  margin-bottom: 8px;
+  /* margin-top: 10px; */
+  margin-bottom: 12px;
 }
 .input-edit button {
   margin-top: 10px;
@@ -1276,9 +1277,8 @@ hr {
   width: 60%;
   display: flex;
   flex-direction: column;
-  font-size: 28px;
-
-  gap: 6px;
+  font-size: 22px;
+  /* gap: 6px; */
 }
 #email {
   cursor: not-allowed;
