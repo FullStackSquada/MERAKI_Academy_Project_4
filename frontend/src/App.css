@@ -1019,6 +1019,17 @@ searchInput:active {
   margin: auto;
   justify-content: space-between;
 }
+.bottom-section-comment-info{
+  width: 90%;
+  position: relative;
+}
+.delete-comment-im{
+  color: rgb(35, 47, 62);
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
 
 #textArea-comment {
   width: 100%;
