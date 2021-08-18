@@ -167,6 +167,7 @@ export default function Product({ token }) {
           <div className="bottom-section-comment-info">
             <p id="first-name">{element.commenter.firstName}</p>
             <p id="comment">{element.comment}</p>
+            <button onClick={deleteComment}>delete</button>
           </div>
         </div>
       );
