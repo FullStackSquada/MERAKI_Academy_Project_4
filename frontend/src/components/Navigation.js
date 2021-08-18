@@ -8,6 +8,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoMdLogOut } from "react-icons/io";
 import { MdFavoriteBorder } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
+import {BiLogInCircle} from "react-icons/bi";
 import Clock from "react-live-clock";
 import "moment-timezone";
 import Logo from "./../../src/log.png";
@@ -120,8 +121,9 @@ export default function Navigation({ token, setToken }) {
               {" "}
               {!token ? (
                 <Link className="link icon-plus-name-navbar" to="/login">
-                  Login
-                </Link>
+                <BiLogInCircle size={27} color={"white"} />
+                <p>Login</p>
+              </Link>
               ) : (
                 ""
               )}
