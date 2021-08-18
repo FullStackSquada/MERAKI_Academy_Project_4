@@ -45,6 +45,18 @@ export default function Product({ token }) {
         }
       });
   };
+
+  const deleteComment =(commentId)=>{
+    axios.delete(`http://localhost:5000/products/${id}/comments/${commentId}`
+    ).then((result) => {
+      setInfo(Math.random());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    }
+    
+
   const addFavorite = () => {
     axios
       .post(
@@ -167,7 +179,9 @@ export default function Product({ token }) {
           <div className="bottom-section-comment-info">
             <p id="first-name">{element.commenter.firstName}</p>
             <p id="comment">{element.comment}</p>
-            <button onClick={deleteComment}>delete</button>
+            <button onClick={()=>{
+              deleteComment(element._id)
+            }}>delete</button>
           </div>
         </div>
       );
