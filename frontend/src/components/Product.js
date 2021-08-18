@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import Rating from "./Rating";
 import axios from "axios";
+import jwt  from 'jsonwebtoken';
 import { useHistory, useParams } from "react-router-dom";
 import ShowRating from "./ShowRating";
 import { AiFillHeart } from "react-icons/ai";
@@ -22,6 +23,16 @@ export default function Product({ token }) {
   const thisToken = localStorage.getItem("token");
   const thisRole = localStorage.getItem("role");
   const resultImg = JSON.parse(localStorage.getItem("userInfo"));
+const [userId, setUserId] = useState("")  
+const getUserId = ()=>{
+try {
+  setUserId( jwt.verify(thisToken,"secretKey").userId)
+  console.log("userId",userId);
+}
+catch(err){
+  console.log(err);
+}
+  }
   const addComment = () => {
     axios
       .post(
@@ -121,6 +132,7 @@ export default function Product({ token }) {
   };
 
   useEffect(() => {
+    getUserId()
     axios
       .get(`http://localhost:5000/products/id/${id}`)
       .then((response) => {
@@ -167,6 +179,8 @@ export default function Product({ token }) {
   let allComment = "";
   if (result.comment) {
     allComment = result.comment.map((element, i) => {
+      console.log("comment info ",element.commenter._id);
+      console.log("user",userId);
       return (
         <div className="bottom-section-comment">
           <div className="bottom-section-comment-img">
@@ -179,9 +193,9 @@ export default function Product({ token }) {
           <div className="bottom-section-comment-info">
             <p id="first-name">{element.commenter.firstName}</p>
             <p id="comment">{element.comment}</p>
-            <button onClick={()=>{
+            {element.commenter._id == userId ? <button onClick={()=>{
               deleteComment(element._id)
-            }}>delete</button>
+            }}>delete</button>:""}
           </div>
         </div>
       );
