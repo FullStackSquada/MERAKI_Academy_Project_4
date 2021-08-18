@@ -21,6 +21,18 @@ const createComment = (req, res) => {
       res.send(err);
     });
 };
+
+const deleteComment = (req,res)=>{
+  const id = req.params.id;
+  const comment_id = req.params.comment_id
+  productModel.updateOne({_id:id},
+    { $pull: { comment: comment_id } }).then(result=>{
+      res.status(200).json("done")
+    }).catch(err=>{
+      res.send(err)
+    })
+}
 module.exports = {
   createComment,
+  deleteComment
 };
